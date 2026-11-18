@@ -18,14 +18,14 @@
 
     <style>
         :root {
-            --bg-cream: #fbf9fc;
-            --card-bg: #ffffff;
+            --bg-cream: #f3e8ff;
+            --card-bg: rgba(255, 255, 255, 0.94);
             --ink: #1f1b24;
             --ink-soft: #635c6e;
             --accent: #7c3aed; /* Morado principal */
             --accent-hover: #6d28d9;
             --accent-light: #f5f3ff; /* Lavanda suave */
-            --border-subtle: #ede9fe;
+            --border-subtle: #e9d5ff;
         }
 
         * {
@@ -36,9 +36,10 @@
             font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
             background-color: var(--bg-cream);
             background-image: 
-                radial-gradient(at 15% 10%, rgba(237, 233, 254, 0.7) 0px, transparent 45%),
-                radial-gradient(at 85% 85%, rgba(243, 232, 255, 0.7) 0px, transparent 45%),
-                radial-gradient(at 50% 50%, rgba(216, 180, 254, 0.15) 0px, transparent 60%);
+                radial-gradient(at 10% 15%, rgba(192, 132, 252, 0.35) 0px, transparent 50%),
+                radial-gradient(at 90% 85%, rgba(168, 85, 247, 0.25) 0px, transparent 50%),
+                radial-gradient(at 50% 50%, rgba(216, 180, 254, 0.4) 0px, transparent 70%);
+            background-attachment: fixed;
             color: var(--ink);
             line-height: 1.7;
             margin: 0;
@@ -72,7 +73,7 @@
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            background: var(--card-bg);
+            background: #ffffff;
             border: 1px solid var(--border-subtle);
             color: var(--ink-soft);
             padding: 0.4rem 1.1rem;
@@ -80,7 +81,7 @@
             font-size: 0.85rem;
             font-weight: 600;
             margin-bottom: 1.5rem;
-            box-shadow: 0 4px 12px rgba(124, 58, 237, 0.05);
+            box-shadow: 0 4px 12px rgba(124, 58, 237, 0.08);
             transition: transform 0.3s ease;
         }
 
@@ -123,20 +124,22 @@
 
         .card {
             background: var(--card-bg);
+            backdrop-filter: blur(8px);
             border: 1px solid var(--border-subtle);
             border-radius: 24px;
             padding: 2.5rem;
-            box-shadow: 0 10px 30px -10px rgba(124, 58, 237, 0.06);
-            /* Animación suave de transición al pasar el mouse */
+            box-shadow: 0 10px 30px -10px rgba(124, 58, 237, 0.1);
             transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), 
                         box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1), 
-                        border-color 0.35s ease;
+                        border-color 0.35s ease,
+                        background-color 0.3s ease;
         }
 
         .card:hover {
             transform: translateY(-6px);
-            box-shadow: 0 22px 40px -12px rgba(124, 58, 237, 0.14);
-            border-color: #ddd6fe;
+            background-color: #ffffff;
+            box-shadow: 0 22px 40px -12px rgba(124, 58, 237, 0.18);
+            border-color: #d8b4fe;
         }
 
         .card-header {
@@ -192,7 +195,7 @@
         }
 
         .tag {
-            background-color: #f8fafc;
+            background-color: #faf5ff;
             color: var(--ink-soft);
             border: 1px solid var(--border-subtle);
             font-size: 0.85rem;
@@ -205,7 +208,7 @@
         .tag:hover {
             background-color: var(--accent-light);
             color: var(--accent);
-            border-color: #ddd6fe;
+            border-color: #d8b4fe;
             transform: translateY(-2px);
         }
 
@@ -230,13 +233,13 @@
             font-weight: 600;
             font-size: 0.92rem;
             transition: all 0.25s ease;
-            box-shadow: 0 4px 14px rgba(124, 58, 237, 0.22);
+            box-shadow: 0 4px 14px rgba(124, 58, 237, 0.25);
         }
 
         .btn:hover {
             background-color: var(--accent-hover);
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(124, 58, 237, 0.35);
+            box-shadow: 0 6px 20px rgba(124, 58, 237, 0.38);
         }
 
         .btn-soft {
@@ -255,7 +258,7 @@
         footer {
             text-align: center;
             padding: 3rem 1rem;
-            color: #9ca3af;
+            color: #7e6b8f;
             font-size: 0.88rem;
             border-top: 1px solid var(--border-subtle);
             margin-top: 4rem;
