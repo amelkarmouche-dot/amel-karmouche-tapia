@@ -19,7 +19,7 @@
     <style>
         :root {
             --bg-cream: #f3e8ff;
-            --card-bg: rgba(255, 255, 255, 0.94);
+            --card-bg: rgba(255, 255, 255, 0.95);
             --ink: #1f1b24;
             --ink-soft: #635c6e;
             --accent: #7c3aed; /* Morado principal */
@@ -63,26 +63,31 @@
             flex: 1;
         }
 
-        /* Cabecera con brillo ambiental sutil y línea decorativa */
+        /* Cabecera con aura visible y línea decorativa */
         header {
             position: relative;
             text-align: center;
             margin-bottom: 4rem;
-            padding: 1rem 0;
+            padding: 1.5rem 1rem;
         }
 
-        header::before {
-            content: "";
+        .header-glow {
             position: absolute;
-            top: 50%;
+            top: 52%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 340px;
-            height: 160px;
-            background: radial-gradient(circle, rgba(139, 92, 246, 0.22) 0%, rgba(243, 232, 255, 0) 70%);
-            filter: blur(22px);
-            z-index: -1;
+            width: 380px;
+            height: 180px;
+            background: radial-gradient(circle, rgba(168, 85, 247, 0.26) 0%, rgba(192, 132, 252, 0.08) 55%, transparent 75%);
+            filter: blur(18px);
+            border-radius: 999px;
             pointer-events: none;
+            z-index: 0;
+        }
+
+        header > *:not(.header-glow) {
+            position: relative;
+            z-index: 1;
         }
 
         .location-pill {
@@ -122,7 +127,6 @@
             color: var(--ink);
             letter-spacing: -0.5px;
             line-height: 1.15;
-            text-shadow: 0 2px 14px rgba(124, 58, 237, 0.08);
         }
 
         header p {
@@ -133,12 +137,32 @@
         }
 
         .header-divider {
-            width: 64px;
-            height: 3px;
-            background: linear-gradient(90deg, transparent, var(--accent), transparent);
-            border-radius: 999px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
             margin: 1.5rem auto 0;
-            opacity: 0.75;
+        }
+
+        .header-divider::before,
+        .header-divider::after {
+            content: "";
+            width: 42px;
+            height: 2.5px;
+            border-radius: 999px;
+            background: linear-gradient(90deg, transparent, var(--accent));
+        }
+
+        .header-divider::after {
+            background: linear-gradient(270deg, transparent, var(--accent));
+        }
+
+        .divider-diamond {
+            width: 7px;
+            height: 7px;
+            background-color: var(--accent);
+            transform: rotate(45deg);
+            border-radius: 1.5px;
         }
 
         /* Secciones apiladas verticalmente */
@@ -274,7 +298,7 @@
         }
 
         .btn:hover svg {
-            transform: scale(1.08);
+            transform: translateX(2px);
         }
 
         .btn-soft {
@@ -316,12 +340,13 @@
 
     <div class="container">
         <header>
+            <div class="header-glow"></div>
             <div class="location-pill">
                 <span class="dot"></span> Arequipa, Perú
             </div>
             <h1>Amel Karmouche Tapia</h1>
             <p>Administración de Negocios · Universidad Católica San Pablo</p>
-            <div class="header-divider"></div>
+            <div class="header-divider"><span class="divider-diamond"></span></div>
         </header>
 
         <main class="sections-stack">
